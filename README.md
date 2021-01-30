@@ -1,6 +1,6 @@
 [![Storybook](https://img.shields.io/badge/build%20with-storybook-ff2c74.svg)](https://storybook.js.org/)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-[![VueJS](https://img.shields.io/badge/powered%by-vue-40b983.svg)](https://vuejs.org/)
+[![VueJS](https://img.shields.io/badge/powered%20by-vue-40b983.svg)](https://vuejs.org/)
 
 # VueJS Component Library
 Welcome to [Storybook](https://storybook.js.org/). This is a UI component development environment and playground
