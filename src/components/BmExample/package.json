@@ -1,0 +1,27 @@
+{
+  "name": "@basman/bm-example",
+  "version": "0.0.1-alpha.0",
+  "description": "VueJS component for example purpose",
+  "keywords": [
+    "Vue",
+    "VueJS",
+    "Example component"
+  ],
+  "license": "MIT",
+  "author": "Bas van Wouwen",
+  "main": "./dist/BmExample.umd.js",
+  "unpkg": "./dist/BmExample.min.js",
+  "browser": {
+    "./sfc": "./src/BmExample.vue"
+  },
+  "scripts": {
+    "build-package": "vue-cli-service build --target lib --name BmExample ./src/BmExample.vue",
+    "serve": "vue-cli-service serve"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "4.5.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

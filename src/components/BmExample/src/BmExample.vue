@@ -1,5 +1,5 @@
 <template>
-    <div class="bf-example">
+    <div class="bm-example">
         <h1>{{ message }}</h1>
     </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     props: {
         message: {
             type: String,
-            default: 'Hello Bits!',
+            default: 'Don\'t put your wand there, boy!',
         },
     },
 };
