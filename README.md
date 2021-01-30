@@ -47,7 +47,10 @@ The `package.json` needs at least the properties as defined below. Change the `B
   },
   "scripts": {
     "build-package": "vue-cli-service build --target lib --name BMExample ./src/BMExample.vue",
-  }
+  },
+  "devDependencies": {
+    "@vue/cli-service": "4.5.10"
+  },
 }
 ```
 

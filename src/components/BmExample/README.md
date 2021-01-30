@@ -1,4 +1,4 @@
-w# Bitfactory example component
+# Vue example component
 
 ## Installation and usage
 
