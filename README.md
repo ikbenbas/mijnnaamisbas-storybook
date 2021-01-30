@@ -1,3 +1,4 @@
+[![Storybook](https://img.shields.io/badge/build%20with-storybook-ff2c74.svg)](https://storybook.js.org/)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 # VueJS Component Library
