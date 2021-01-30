@@ -1,0 +1,24 @@
+{
+  "name": "@bitfactory/bf-example",
+  "version": "0.0.1-alpha.0",
+  "author": "Bitfactory",
+  "keywords": [
+    "Vue",
+    "VueJS",
+    "Example component"
+  ],
+  "description": "VueJS component for example purpose",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/BfExample.umd.js",
+  "unpkg": "./dist/BfExample.min.js",
+  "browser": {
+    "./sfc": "./src/BfExample.vue"
+  },
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name BfExample ./src/BfExample.vue"
+  },
+  "gitHead": "20c547f467f8a9b8bf22fa7c2f4700fca8ba7313"
+}

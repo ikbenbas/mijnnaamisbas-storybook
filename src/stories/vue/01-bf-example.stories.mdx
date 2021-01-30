@@ -1,0 +1,22 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import BfExample from '../../components/BfExample/src/BfExample';
+
+<Meta title="Vue/BfExample" component={BfExample} />
+
+# Bitfactory example component
+
+<Preview>
+    <Story name="Default">
+    {{
+        components: { BfExample },
+        template: '<BfExample></BfExample>',
+    }}
+    </Story>
+</Preview>
+
+```html
+<bf-example message="Hello Bits!"></bf-example>
+```
+
+## Component properties
+<Props of={BfExample} />
