@@ -10,7 +10,7 @@ export default {
     props: {
         message: {
             type: String,
-            default: 'Don\'t put your wand there, boy!',
+            default: 'Don\'t put your wand there, boy!!',
         },
     },
 };
