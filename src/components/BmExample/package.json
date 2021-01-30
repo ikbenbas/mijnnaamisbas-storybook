@@ -1,6 +1,6 @@
 {
   "name": "@basman/bm-example",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1",
   "description": "VueJS component for example purpose",
   "keywords": [
     "Vue",
