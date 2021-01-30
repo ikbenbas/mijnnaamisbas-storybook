@@ -93,6 +93,12 @@ run the following command in your component's directory:
 
 This creates a couple of files in the `./dist` directory of your component. These should match the `main`, `unpkg` and `browser` property values in your `package.json`.
 
+Before publishing the package to NPM Registry check with what user you are signed in with `$ npm whoami`. If you are logged in with the wrong account, run `$ npm adduser` and sign in with the correct credentials.
+
+To publish the package go to the root of this project and run:
+
+`$ lerna publish`
+
 ## Listen to Custom Events with vanilla JS
 You can listen to the Custom Events from your VueJS component with vanilla JS
 by adding a `ref=""` attribute on your component's html tag:
