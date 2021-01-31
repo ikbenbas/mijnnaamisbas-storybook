@@ -1,0 +1,26 @@
+{
+  "name": "@basman/bas-test",
+  "version": "0.0.3",
+  "description": "VueJS component for example purpose",
+  "keywords": [
+    "Vue",
+    "VueJS",
+    "Example component"
+  ],
+  "license": "MIT",
+  "author": "Bas van Wouwen",
+  "main": "./dist/BasTest.umd.js",
+  "unpkg": "./dist/BasTest.min.js",
+  "browser": {
+    "./sfc": "./src/BasTest.vue"
+  },
+  "scripts": {
+    "build-package": "vue-cli-service build --target lib --name BasTest ./src/BasTest.vue"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "4.5.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
