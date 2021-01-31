@@ -2,7 +2,7 @@
 
 originalComponent="BasExample"
 kebabOriginalComponent="bas-example"
-c=BasComponent
+component=BasComponent
 
 while getopts "c:" opt
 do

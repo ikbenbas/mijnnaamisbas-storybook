@@ -1,0 +1,22 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import BasModal from '../../components/BasModal/src/BasModal';
+
+<Meta title="Vue/BasModal" component={BasModal} />
+
+# Example component
+
+<Preview>
+    <Story name="Default">
+    {{
+        components: { BasModal },
+        template: '<BasModal></BasModal>',
+    }}
+    </Story>
+</Preview>
+
+```html
+<bas-modal message="Accio brains!"></bas-modal>
+```
+
+## Component properties
+<Props of={BasModal} />
