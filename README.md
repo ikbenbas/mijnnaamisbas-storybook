@@ -20,7 +20,7 @@ Start Storybook with:
 `$ npm run storybook`
 
 ## Conventions for creating VueJS components
- - First of all, the is a command `$ npm run generate:vue ComponentName"` which generates a new component and all needed files.
+ - First of all, there is a command `$ npm run generate:vue ComponentName` which generates a new component and all needed files.
  - Each component has it's own folder in the `/src/components/` directory with a `src` folder, and package.json
  - Folder names are CamelCase and **must** start with the `Bas` prefix e.g. `BasExample`
  - Create the main component in the `src` directory within newly created folder. This file should have the same name as the folder e.g. `BasExample.vue`.
@@ -60,7 +60,7 @@ The `package.json` needs at least the properties as defined below. Change the `B
 The `name` property value **must** start with the `@basman/` scope and the author name should be `Bas van Wouwen`.
 
 ## Writing stories
- - First of all, the is a command `$ npm run generate:vue-story ComponentName"` which generates a new story for the given component.
+ - First of all, there is a command `$ npm run generate:vue-story ComponentName` which generates a new story for the given components
  - For each main VueJS component you have to create a `.stories.mdx` file in the `/src/stories/` directory
  - The filename should be a lowercase hyphenated string of the CamelCase component name e.g. `bas-example.stories.mdx`
 
