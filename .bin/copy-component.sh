@@ -33,4 +33,5 @@ perl -pi -e "s/$kebabOriginalComponent/$kebabComponent/g" ./src/components/$comp
 echo "Reset package version";
 perl -pi -e "s/\"version\": \"([0-9]+).([0-9]+).([0-9]+)\"/\"version\": \"0.0.0\"/g" ./src/components/$component/package.json
 
-echo "Done!";
+echo "";
+echo "Done! 🚀";

@@ -1,0 +1,26 @@
+{
+  "name": "@basman/bas-modal",
+  "version": "0.0.0",
+  "description": "VueJS component for example purpose",
+  "keywords": [
+    "Vue",
+    "VueJS",
+    "Example component"
+  ],
+  "license": "MIT",
+  "author": "Bas van Wouwen",
+  "main": "./dist/BasModal.umd.js",
+  "unpkg": "./dist/BasModal.min.js",
+  "browser": {
+    "./sfc": "./src/BasModal.vue"
+  },
+  "scripts": {
+    "build-package": "vue-cli-service build --target lib --name BasModal ./src/BasModal.vue"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "4.5.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
