@@ -7,7 +7,7 @@
     "build-storybook": "build-storybook",
     "eslint": "eslint \"*/**/*.{js,vue}\" --ignore-pattern node_modules/",
     "eslint:fix": "eslint \"*/**/*.{js,vue}\" --ignore-pattern node_modules/ --fix",
-    "generate": "sh ./.bin/copy-component.sh -c",
+    "generate:vue": "sh ./.bin/copy-component.sh -c",
     "serve": "vue-cli-service serve",
     "storybook": "start-storybook -p 6006",
     "stylelint": "stylelint \"*/**/*.scss\"",
