@@ -1,0 +1,22 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import BasExample from '../../components/BasExample/src/BasExample';
+
+<Meta title="Vue/BasExample" component={BasExample} />
+
+# Example component
+
+<Preview>
+    <Story name="Default">
+    {{
+        components: { BasExample },
+        template: '<BasExample></BasExample>',
+    }}
+    </Story>
+</Preview>
+
+```html
+<bas-example message="Accio brains!"></bas-example>
+```
+
+## Component properties
+<Props of={BasExample} />

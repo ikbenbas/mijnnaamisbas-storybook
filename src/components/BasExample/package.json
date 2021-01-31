@@ -1,5 +1,5 @@
 {
-  "name": "@basman/bm-example",
+  "name": "@basman/bas-example",
   "version": "0.0.3",
   "description": "VueJS component for example purpose",
   "keywords": [
@@ -9,14 +9,13 @@
   ],
   "license": "MIT",
   "author": "Bas van Wouwen",
-  "main": "./dist/BmExample.umd.js",
-  "unpkg": "./dist/BmExample.min.js",
+  "main": "./dist/BasExample.umd.js",
+  "unpkg": "./dist/BasExample.min.js",
   "browser": {
-    "./sfc": "./src/BmExample.vue"
+    "./sfc": "./src/BasExample.vue"
   },
   "scripts": {
-    "build-package": "vue-cli-service build --target lib --name BmExample ./src/BmExample.vue",
-    "serve": "vue-cli-service serve"
+    "build-package": "vue-cli-service build --target lib --name BasExample ./src/BasExample.vue"
   },
   "devDependencies": {
     "@vue/cli-service": "4.5.10"

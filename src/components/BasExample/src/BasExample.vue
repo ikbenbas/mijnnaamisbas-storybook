@@ -1,12 +1,12 @@
 <template>
-    <div class="bm-example">
+    <div class="bas-example">
         <h1>{{ message }}</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'BfExample',
+    name: 'BasExample',
     props: {
         message: {
             type: String,
@@ -19,7 +19,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../../scss/main';
 
-.bf-example {
+.bas-example {
     color: $color-text;
     font-family: $font-primary;
     text-align: center;

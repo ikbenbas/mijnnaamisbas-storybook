@@ -21,34 +21,34 @@ Start Storybook with:
 
 ## Conventions for creating VueJS components
  - Each component has it's own folder in the `/src/components/` directory with a `src` folder, and package.json
- - Folder names are CamelCase and **must** start with the `Bf` prefix e.g. `BfExample`
- - Create the main component in the `src` directory within newly created folder. This file should have the same name as the folder e.g. `BfExample.vue`.
- The path to your file should look similar to `/src/components/BfExample/src/BfExample.vue`.
- - Within this folder you can create one or more VueJS child components, using the same naming convention e.g. `BfExampleChild.vue`
+ - Folder names are CamelCase and **must** start with the `Bas` prefix e.g. `BasExample`
+ - Create the main component in the `src` directory within newly created folder. This file should have the same name as the folder e.g. `BasExample.vue`.
+ The path to your file should look similar to `/src/components/BasExample/src/BasExample.vue`.
+ - Within this folder you can create one or more VueJS child components, using the same naming convention e.g. `BasExampleChild.vue`
 
-The `package.json` needs at least the properties as defined below. Change the `BfExample` to the naming of your own component.
+The `package.json` needs at least the properties as defined below. Change the `BasExample` to the naming of your own component.
 
 ```
 {
-  "name": "@basman/bm-example",
+  "name": "@basman/bas-example",
   "version": "0.0.0",
   "author": "Bas van Wouwen",
   "keywords": [
     "Vue",
     "VueJS",
   ],
-  "description": "VueJS component for a happy coding",
+  "description": "VueJS component for a happy coding experience",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/BMExample.umd.js",
-  "unpkg": "./dist/BMExample.min.js",
+  "main": "./dist/BasExample.umd.js",
+  "unpkg": "./dist/BasExample.min.js",
   "browser": {
-    "./sfc": "./src/BMExample.vue"
+    "./sfc": "./src/BasExample.vue"
   },
   "scripts": {
-    "build-package": "vue-cli-service build --target lib --name BMExample ./src/BMExample.vue",
+    "build-package": "vue-cli-service build --target lib --name BasExample ./src/BasExample.vue",
   },
   "devDependencies": {
     "@vue/cli-service": "4.5.10"
@@ -60,16 +60,16 @@ The `name` property value **must** start with the `@basman/` scope and the autho
 
 ## Writing stories
  - For each main VueJS component you have to create a `.stories.mdx` file in the `/src/stories/` directory
- - The filename should be a lowercase hyphenated string of the CamelCase component name e.g. `bm-example.stories.mdx`
+ - The filename should be a lowercase hyphenated string of the CamelCase component name e.g. `bas-example.stories.mdx`
 
 ## Start developing
 In your `stories.mdx` file add the following code:
 
 ```
 import { Meta, Story } from '@storybook/addon-docs/blocks'; // Import some needed utilities
-import BMExample from '../components/BMExample/BMExample'; // Import the component
+import BasExample from '../components/BasExample/BasExample'; // Import the component
 
-<Meta title="BMExample" component={BMExample} /> // Initialization of your component,
+<Meta title="BasExample" component={BasExample} /> // Initialization of your component,
 
 ## Basman example component
 
@@ -77,8 +77,8 @@ import BMExample from '../components/BMExample/BMExample'; // Import the compone
 <Preview>
     <Story name="Default">
     {{
-        components: { BMExample },
-        template: '<BMExample></BMExample>',
+        components: { BasExample },
+        template: '<BasExample></BasExample>',
     }}
     </Story>
 </Preview>
@@ -106,7 +106,7 @@ You can listen to the Custom Events from your VueJS component with vanilla JS
 by adding a `ref=""` attribute on your component's html tag:
 
 ```
-<bm-example ref="bm-example"></bm-example>
+<bas-example ref="bas-example"></bas-example>
 ```
 
 Your component becomes available on the `$refs` property of the Vue instance.
@@ -115,10 +115,10 @@ With the `.$on()` method you can add a method to handle the event.
 ```
 const vm = new Vue({
     el: '#app',
-    components: { BMExample },
+    components: { BasExample },
 });
 
-vm.$refs['bm-example'].$on('submit', data => console.log('submit', data))
+vm.$refs['bas-example'].$on('submit', data => console.log('submit', data))
 ```
 
 ## TODO
