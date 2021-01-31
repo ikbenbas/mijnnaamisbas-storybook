@@ -14,7 +14,6 @@ done
 kebabComponent=$(echo "$component" | perl -pe 's/([a-z0-9])([A-Z])/$1-\L$2/g' | tr '[:upper:]' '[:lower:]');
 storyFileName=$kebabComponent.stories.mdx
 
-
 echo "Copying $kebabOriginalComponent story to new story: $storyFileName";
 
 cp ./src/stories/vue/01-$kebabOriginalComponent.stories.mdx ./src/stories/vue/$storyFileName
