@@ -6,6 +6,9 @@ import {
   // or MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
 
+import Vue from 'vue';
+import BasModal from '../src/components/BasModal/src';
+
 addDecorator(withA11y);
 addDecorator(withKnobs);
 
@@ -14,3 +17,6 @@ addParameters({
     viewports: {...INITIAL_VIEWPORTS}, // https://github.com/storybookjs/storybook/tree/master/addons/viewport
   },
 });
+
+// Add plugins to Vue
+Vue.use(BasModal);

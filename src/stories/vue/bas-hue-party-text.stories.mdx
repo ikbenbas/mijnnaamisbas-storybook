@@ -1,0 +1,61 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, text, boolean, color } from '@storybook/addon-knobs';
+import BasHuePartyText from '../../components/BasHuePartyText/src/BasHuePartyText';
+
+<Meta title="Vue/BasHuePartyText" component={BasHuePartyText} />
+
+<Preview>
+    <Story name="Default">
+    {{
+        decorators: [withKnobs],
+        components: { BasHuePartyText },
+        props: {
+            active: {
+                default: boolean('Active', true),
+            },
+            onHover: {
+                default: boolean('On Hover', false),
+            },
+            animationDuration: {
+                default: text('Animation duration', '1s'),
+            },
+            startColor: {
+                default: color('Start color', '#55acee'),
+            },
+            endColor: {
+                default: color('End color', '#238c76'),
+            },
+        },
+        template: `<h1><BasHuePartyText
+            :active="active"
+            :on-hover="onHover"
+            :animation-duration="animationDuration"
+            :start-color="startColor"
+            :end-color="endColor"
+        >ANIMETED HUE</BasHuePartyText></h1>`,
+    }}
+    </Story>
+</Preview>
+
+```html
+<bas-hue-party-text>ANIMETED HUE</bas-hue-party-text>
+```
+
+## Component properties
+<Props of={BasHuePartyText} />
+
+<Preview>
+    <Story name="onHover">
+    {{
+        components: { BasHuePartyText },
+        template: '<h1><BasHuePartyText :active="false" :on-hover="true">Hover Me</BasHuePartyText></h1>',
+    }}
+    </Story>
+</Preview>
+
+```html
+<bas-hue-party-text
+    :active="false"
+    :on-hover="true"
+>Hover Me</bas-hue-party-text>
+```

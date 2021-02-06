@@ -20,11 +20,35 @@ module.exports = {
     webpackFinal: async (config, { configType }) => {
         // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 
+        // https://github.com/storybookjs/storybook/issues/6319#issuecomment-477852640
+        config.module.rules = config.module.rules.filter(
+            rule => !rule.test || rule.test.toString() !== '/\\.css$/'
+        );
+
         config.module.rules.push({
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            test: /\.css$/,
+            loaders: ['style-loader', 'css-loader', 'postcss-loader'],
             include: path.resolve(__dirname, '../'),
-        })
+        });
+
+        // config.module.rules.push({
+        //     test: /\.vue$/,
+        //     loaders: ['../node_modules/vue-loader/lib/index.js', 'postcss-loader'],
+        //     include: path.resolve(__dirname, '../'),
+        // });
+
+        // config.module.rules = config.module.rules.forEach(rule => {
+        //         if (rule.test.toString() === '/\\.vue$/') {
+        //             console.log(rule);
+        //             rule['loaders'] = ['postcss-loader'];
+        //         }
+        // });
+
+        // config.module.rules.push({
+        //     test: /\.vue$/,
+        //     loaders: ['style-loader', 'css-loader', 'postcss-loader'],
+        //     include: path.resolve(__dirname, '../'),
+        // });
 
         return config
     },

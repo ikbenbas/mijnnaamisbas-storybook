@@ -6,16 +6,35 @@
 $ npm i @basman/bas-modal
 ```
 
-```JavaScript
+```javascript
+import Vue from 'vue';
 import BasModal from '@basman/bas-modal';
 
-...
-new Vue({
-    el: '#app',
-    components: { BasModal },
-});
+Vue.use(BasModal);
 ```
 
-```vue
-<bas-modal message="Accio Brain!"></bas-modal>
+```html
+<BasModal ref="modal" :close-event="closeAlert" :open-event="openAlert">
+    <template #header><h1>header</h1></template>
+    <template #body><p>body</p></template>
+    <template #buttons><button>buttons</button></template>
+</BasModal>
+```
+
+```javascript
+...
+methods: {
+    openModal() {
+        this.$refs.modal.open();
+    }
+}
+...
+```
+
+## Programmatically
+
+You can also choose to open the component programmatically. With this option you do not need to add the component tag to your template. You can call the modal's `open` method on the `this.$basman` property of your Vue instance.
+
+```javascript
+this.$basman.modal.open();
 ```

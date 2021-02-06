@@ -1,21 +1,98 @@
 import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
-import BasModal from '../../components/BasModal/src/BasModal';
+import { BasModal, BasModalProgrammatic } from '../../components/BasModal/src/';
 
 <Meta title="Vue/BasModal" component={BasModal} />
 
-# Example component
+# Modal
+
+## Installation
+
+```bash
+$ npm i @basman/bas-modal
+```
+
+```javascript
+import Vue from 'vue';
+import BasModal from '@basman/bas-modal';
+
+Vue.use(BasModal);
+```
+
+## Component
+
+Add the modal component to your template and trigger with the `open` event.
 
 <Preview>
     <Story name="Default">
     {{
         components: { BasModal },
-        template: '<BasModal></BasModal>',
+        template: `
+            <section>
+                <BasModal ref="modal" :close-event="closeAlert" :open-event="openAlert">
+                    <template #header><h1>header</h1></template>
+                    <template #body><p>body</p></template>
+                    <template #buttons><button>buttons</button></template>
+                </BasModal>
+                <button @click="openModal">Open Modal</button>
+            </section>
+        `,
+        methods: {
+            closeAlert() {
+                console.log('Modal closing event');
+            },
+            openAlert() {
+                console.log('Modal opening event');
+            },
+            openModal() {
+                this.$refs.modal.open();
+            }
+        }
     }}
     </Story>
 </Preview>
 
 ```html
-<bas-modal message="Accio brains!"></bas-modal>
+<BasModal ref="modal" :close-event="closeAlert" :open-event="openAlert">
+    <template #header><h1>header</h1></template>
+    <template #body><p>body</p></template>
+    <template #buttons><button>buttons</button></template>
+</BasModal>
+```
+
+```javascript
+...
+methods: {
+    openModal() {
+        this.$refs.modal.open();
+    }
+}
+...
+```
+
+## Programmatically
+
+You can also choose to open the component programmatically. With this option you do not need to add the component tag to your template. You can call the modal's `open` method on the `this.$basman` property of your Vue instance.
+
+<Preview>
+    <Story name="Programmatically">
+    {{
+        components: { BasModal },
+        template: `
+            <section>
+                <button @click="openModal">Open modal programmatically</button>
+            </section>
+        `,
+        methods: {
+            openModal() {
+                this.$basman.modal.open();
+            }
+        }
+    }}
+    </Story>
+</Preview>
+
+```javascript
+this.$basman.modal.open();
 ```
 
 ## Component properties

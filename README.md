@@ -51,9 +51,6 @@ The `package.json` needs at least the properties as defined below. Change the `B
   "scripts": {
     "build-package": "vue-cli-service build --target lib --name BasExample ./src/BasExample.vue",
   },
-  "devDependencies": {
-    "@vue/cli-service": "4.5.10"
-  },
 }
 ```
 
@@ -90,16 +87,16 @@ Now you can develop your component and preview it in Storybook
 
 ## Build and publish your component
 
-To build your component before publishing it as a package on [Basman's NPM organization](https://www.npmjs.com/org/basman)
+To build your components before publishing them as a package on [Basman's NPM organization](https://www.npmjs.com/org/basman)
 run the following command in your component's directory:
 
-`$ npm run build-package`
+`$ lerna run build-package`
 
-This creates a couple of files in the `./dist` directory of your component. These should match the `main`, `unpkg` and `browser` property values in your `package.json`.
+This creates a couple of files in the `./dist` directory of your components. These should match the `main`, `unpkg` and `browser` property values in your `package.json`.
 
-Before publishing the package to NPM Registry check with what user you are signed in with `$ npm whoami`. If you are logged in with the wrong account, run `$ npm adduser` and sign in with the correct credentials.
+Before publishing the packages to NPM Registry check with what user you are signed in with `$ npm whoami`. If you are logged in with the wrong account, run `$ npm adduser` and sign in with the correct credentials.
 
-To publish the package go to the root of this project and run:
+To publish the packages go to the root of this project and run:
 
 `$ lerna publish`
 

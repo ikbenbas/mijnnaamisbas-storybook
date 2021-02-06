@@ -1,5 +1,5 @@
 {
-  "name": "@basman/bas-modal",
+  "name": "@basman/bas-hue-party-text",
   "version": "0.0.0",
   "description": "VueJS component for example purpose",
   "keywords": [
@@ -9,13 +9,13 @@
   ],
   "license": "MIT",
   "author": "Bas van Wouwen",
-  "main": "./dist/BasModal.umd.js",
-  "unpkg": "./dist/BasModal.min.js",
+  "main": "./dist/BasHuePartyText.umd.js",
+  "unpkg": "./dist/BasHuePartyText.min.js",
   "browser": {
-    "./sfc": "./src/BasModal.vue"
+    "./sfc": "./src/BasHuePartyText.vue"
   },
   "scripts": {
-    "build-package": "vue-cli-service build --target lib --name BasModal ./src/index.js"
+    "build-package": "vue-cli-service build --target lib --name BasHuePartyText ./src/BasHuePartyText.vue"
   },
   "publishConfig": {
     "access": "public"
