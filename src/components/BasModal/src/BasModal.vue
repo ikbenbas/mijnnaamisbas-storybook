@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .bas-modal {
     backdrop-filter: blur(3px);
     display: none;

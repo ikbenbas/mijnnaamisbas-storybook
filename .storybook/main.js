@@ -1,8 +1,5 @@
 const path = require('path')
 
-// your app's webpack.config.js
-const custom = require('../webpack.config.js');
-
 module.exports = {
     stories: ['../src/**/*.stories.@(js|mdx)'],
     addons: [
@@ -21,7 +18,6 @@ module.exports = {
         },
     ],
     webpackFinal: async (config, { configType }) => {
-console.log(custom);
         // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 
         // https://github.com/storybookjs/storybook/issues/6319#issuecomment-477852640
