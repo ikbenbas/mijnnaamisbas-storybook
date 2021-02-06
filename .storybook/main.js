@@ -1,5 +1,8 @@
 const path = require('path')
 
+// your app's webpack.config.js
+const custom = require('../webpack.config.js');
+
 module.exports = {
     stories: ['../src/**/*.stories.@(js|mdx)'],
     addons: [
@@ -18,22 +21,23 @@ module.exports = {
         },
     ],
     webpackFinal: async (config, { configType }) => {
+console.log(custom);
         // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 
         // https://github.com/storybookjs/storybook/issues/6319#issuecomment-477852640
-        config.module.rules = config.module.rules.filter(
-            rule => !rule.test || rule.test.toString() !== '/\\.css$/'
-        );
-
-        config.module.rules.push({
-            test: /\.css$/,
-            loaders: ['style-loader', 'css-loader', 'postcss-loader'],
-            include: path.resolve(__dirname, '../'),
-        });
+        // config.module.rules = config.module.rules.filter(
+        //     rule => !rule.test || rule.test.toString() !== '/\\.css$/'
+        // );
 
         // config.module.rules.push({
-        //     test: /\.vue$/,
-        //     loaders: ['../node_modules/vue-loader/lib/index.js', 'postcss-loader'],
+        //     test: /\.css$/,
+        //     loaders: ['style-loader', 'css-loader', 'postcss-loader'],
+        //     include: path.resolve(__dirname, '../'),
+        // });
+
+        // config.module.rules.push({
+        //     test: /\.postcss$/,
+        //     loaders: ['style-loader', 'postcss-loader'],
         //     include: path.resolve(__dirname, '../'),
         // });
 

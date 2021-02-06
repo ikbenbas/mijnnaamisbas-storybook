@@ -1,8 +1,8 @@
 module.exports = {
     // extends: ['@commitlint/config-conventional'],
     rules: {
-        'jira-issue-empty-rule': [2, 'always'],
-        'jira-subject-empty-rule': [2, 'always'],
+        // 'jira-issue-empty-rule': [2, 'always'],
+        // 'jira-subject-empty-rule': [2, 'always'],
     },
     parserPreset: {
         parserOpts: {

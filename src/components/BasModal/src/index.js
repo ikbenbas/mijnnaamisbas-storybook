@@ -3,23 +3,8 @@ import BasModal from './BasModal';
 let localVueInstance = null;
 
 const BasModalProgrammatic = {
-    open(parameters) {
+    open() {
         const parent = null;
-
-        // const defaultParameter = {
-        //     position: config.defaultBasModalPosition || 'is-top',
-        // };
-
-        // if (parameters.parent) {
-        //     parent = { ...parameters.parent };
-        //     delete parameters.parent;
-        // }
-
-        // let slot = null;
-        // if (Array.isArray(parameters.message)) {
-        //     slot = parameters.message;
-        //     delete parameters.message;
-        // }
 
         // const propertiesData = merge(defaultParameter, parameters);
         const Vue = typeof window !== 'undefined' && window.Vue ? window.Vue : localVueInstance;
@@ -31,12 +16,6 @@ const BasModalProgrammatic = {
                 isProgrammatic: true,
             },
         });
-        console.dir(component);
-
-        // if (slot) {
-        //     component.$slots.default = slot;
-        //     component.$forceUpdate();
-        // }
 
         return component;
     },

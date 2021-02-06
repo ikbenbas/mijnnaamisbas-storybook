@@ -151,7 +151,7 @@ var staticRenderFns = []
 });
 
 // CONCATENATED MODULE: ./src/BasExample.vue?vue&type=script&lang=js&
- /* harmony default export */ var src_BasExamplevue_type_script_lang_js_ = (BasExamplevue_type_script_lang_js_);
+ /* harmony default export */ var src_BasExamplevue_type_script_lang_js_ = (BasExamplevue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/BasExample.vue?vue&type=style&index=0&id=7cf723e0&scoped=true&lang=css&
 var BasExamplevue_type_style_index_0_id_7cf723e0_scoped_true_lang_css_ = __webpack_require__("c7ec");
 
@@ -272,7 +272,7 @@ var component = normalizeComponent(
   null,
   "7cf723e0",
   null
-
+  
 )
 
 /* harmony default export */ var BasExample = (component.exports);
@@ -313,7 +313,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     if (descriptor && descriptor.get !== getCurrentScript && document.currentScript) {
       return document.currentScript
     }
-
+  
     // IE 8-10 support script readyState
     // IE 11+ & Firefox support stack trace
     try {
@@ -331,24 +331,24 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         inlineScriptSourceRegExp,
         inlineScriptSource,
         scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
+  
       if (scriptLocation === currentLocation) {
         pageSource = document.documentElement.outerHTML;
         inlineScriptSourceRegExp = new RegExp('(?:[^\\n]+?\\n){0,' + (line - 2) + '}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*', 'i');
         inlineScriptSource = pageSource.replace(inlineScriptSourceRegExp, '$1').trim();
       }
-
+  
       for (var i = 0; i < scripts.length; i++) {
         // If ready state is interactive, return the script tag
         if (scripts[i].readyState === 'interactive') {
           return scripts[i];
         }
-
+  
         // If src matches, return the script tag
         if (scripts[i].src === scriptLocation) {
           return scripts[i];
         }
-
+  
         // If inline source matches, return the script tag
         if (
           scriptLocation === currentLocation &&
@@ -358,7 +358,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           return scripts[i];
         }
       }
-
+  
       // If no match, return null
       return null;
     }
