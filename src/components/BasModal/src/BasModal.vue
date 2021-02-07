@@ -107,42 +107,42 @@ export default {
     visibility: hidden;
     width: 100%;
     z-index: 999;
-}
 
-.bas-modal--visible,
-.bas-modal:target {
-    animation-duration: 200ms;
-    animation-name: slideFromTop;
-    display: flex;
-    visibility: visible;
-}
+    &--visible,
+    &:target {
+        animation-duration: 200ms;
+        animation-name: slideFromTop;
+        display: flex;
+        visibility: visible;
+    }
 
-.bas-modal__modal {
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    margin: auto;
-    padding: 1.5em;
-    position: relative;
-    width: 50vw;
-}
+    &__modal {
+        background-color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        margin: auto;
+        padding: 1.5em;
+        position: relative;
+        width: 50vw;
 
-.bas-modal__modal__close {
-    fill: #ddd;
-    height: 25px;
-    position: absolute;
-    right: 1.5em;
-    top: 1.5em;
-    width: 25px;
-}
+        &__close {
+            fill: #ddd;
+            height: 25px;
+            position: absolute;
+            right: 1.5em;
+            top: 1.5em;
+            width: 25px;
 
-.bas-modal__modal__close:hover {
-    animation: spin 200ms linear;
-    cursor: pointer;
-}
+            &:hover {
+                animation: spin 200ms linear;
+                cursor: pointer;
+            }
+        }
 
-.bas-modal__modal__buttons .button {
-    margin-right: 1em;
+        &__buttons .button {
+            margin-right: 1em;
+        }
+    }
 }
 
 @keyframes slideFromTop {
