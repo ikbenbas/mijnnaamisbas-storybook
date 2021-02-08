@@ -1,5 +1,8 @@
 import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
 import { BasModal, BasModalProgrammatic } from '../../components/BasModal/src/';
+import BasExample from '../../components/BasExample/src/BasExample';
+import Vue from 'vue';
+import BasModalPlugin from '../../components/BasModal/src';
 
 <Meta title="Vue/BasModal" component={BasModal} />
 
@@ -76,15 +79,19 @@ You can also choose to open the component programmatically. With this option you
 <Preview>
     <Story name="Programmatically">
     {{
-        components: { BasModal },
         template: `
             <section>
                 <button @click="openModal">Open modal programmatically</button>
             </section>
         `,
+        created() {
+            Vue.use(BasModalPlugin);
+        },
         methods: {
             openModal() {
-                this.$basman.modal.open();
+                this.$basman.modal.open({
+                    'component': BasExample
+                });
             }
         }
     }}

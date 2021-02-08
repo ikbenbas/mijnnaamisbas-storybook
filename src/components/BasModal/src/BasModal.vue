@@ -6,33 +6,39 @@
         }"
     >
         <div class="bas-modal__modal">
-            <header>
-                <div
-                    class="bas-modal__modal__close"
-                    :tabindex="visible ? 0 : -1"
-                    @click="close"
-                    @keyup="close"
+            <div
+                class="bas-modal__modal__close"
+                :tabindex="visible ? 0 : -1"
+                @click="close"
+                @keyup="close"
+            >
+                <svg
+                    class="{classes}"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
                 >
-                    <svg
-                        class="{classes}"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                    >
-                        <path d="M7.2 5.8L5.8 7.2l8.8 8.8-8.8 8.8 1.4 1.4 8.8-8.8 8.8 8.8 1.4-1.4-8.8-8.8 8.8-8.8-1.4-1.4-8.8 8.8z" />
-                    </svg>
-                    <!-- <TimesSvg /> -->
-                </div>
+                    <path d="M7.2 5.8L5.8 7.2l8.8 8.8-8.8 8.8 1.4 1.4 8.8-8.8 8.8 8.8 1.4-1.4-8.8-8.8 8.8-8.8-1.4-1.4-8.8 8.8z" />
+                </svg>
+                <!-- <TimesSvg /> -->
+            </div>
 
-                <slot name="header" />
-            </header>
+            <component
+                :is="component"
+                v-if="component"
+            />
+            <template v-else>
+                <header>
+                    <slot name="header" />
+                </header>
 
-            <section>
-                <slot name="body" />
-            </section>
+                <section>
+                    <slot name="body" />
+                </section>
 
-            <footer class="bas-modal-alert__modal__buttons">
-                <slot name="buttons" />
-            </footer>
+                <footer class="bas-modal-alert__modal__buttons">
+                    <slot name="buttons" />
+                </footer>
+            </template>
         </div>
     </div>
 </template>
@@ -41,6 +47,11 @@
 export default {
     name: 'BasModal',
     props: {
+        component: {
+            type: Object,
+            default: null,
+            required: false,
+        },
         isProgrammatic: {
             type: Boolean,
             default: false,

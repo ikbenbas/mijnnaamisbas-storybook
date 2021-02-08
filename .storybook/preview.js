@@ -7,7 +7,7 @@ import {
 } from '@storybook/addon-viewport';
 
 import Vue from 'vue';
-import BasModal from '../src/components/BasModal/src';
+import BasModalPlugin from '../src/components/BasModal/src';
 
 addDecorator(withA11y);
 addDecorator(withKnobs);
@@ -19,4 +19,4 @@ addParameters({
 });
 
 // Add plugins to Vue
-Vue.use(BasModal);
+Vue.use(BasModalPlugin);
