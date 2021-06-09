@@ -1,46 +1,57 @@
 <template>
-    <div
-        :class="{
-            'bas-modal': true,
-            'bas-modal--visible': visible
-        }"
-    >
-        <div class="bas-modal__modal">
-            <div
-                class="bas-modal__modal__close"
-                :tabindex="visible ? 0 : -1"
-                @click="close"
-                @keyup="close"
-            >
-                <svg
-                    class="{classes}"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 32 32"
+    <transition name="fade">
+        <div
+            v-if="visible"
+            class="bas-modal"
+            :style="modalStyle"
+        >
+            <transition name="slide-fade">
+                <div
+                    v-if="active"
+                    class="bas-modal__modal"
                 >
-                    <path d="M7.2 5.8L5.8 7.2l8.8 8.8-8.8 8.8 1.4 1.4 8.8-8.8 8.8 8.8 1.4-1.4-8.8-8.8 8.8-8.8-1.4-1.4-8.8 8.8z" />
-                </svg>
-                <!-- <TimesSvg /> -->
-            </div>
+                    <div
+                        class="bas-modal__modal__close"
+                        :tabindex="visible ? 0 : -1"
+                        @click="close"
+                        @keyup="close"
+                    >
+                        <svg
+                            class="{classes}"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 32 32"
+                        >
+                            <path d="M7.2 5.8L5.8 7.2l8.8 8.8-8.8 8.8 1.4 1.4 8.8-8.8 8.8 8.8 1.4-1.4-8.8-8.8 8.8-8.8-1.4-1.4-8.8 8.8z" />
+                        </svg>
+                    </div>
 
-            <component
-                :is="component"
-                v-if="component"
-            />
-            <template v-else>
-                <header>
-                    <slot name="header" />
-                </header>
+                    {{ positionHorizontal }}<br>
+                    {{ positionVertical }}
+                    <component
+                        :is="component"
+                        v-if="component"
+                    />
+                    <template v-else>
+                        <header class="bas-modal__modal__header">
+                            <slot name="header" />
+                        </header>
 
-                <section>
-                    <slot name="body" />
-                </section>
+                        <section class="bas-modal__modal__body">
+                            <slot name="body" />
+                        </section>
 
-                <footer class="bas-modal-alert__modal__buttons">
-                    <slot name="buttons" />
-                </footer>
-            </template>
+                        <footer class="bas-modal-alert__modal__footer">
+                            <slot
+                                name="footer"
+                                :close="close"
+                                :cancel="cancel"
+                            />
+                        </footer>
+                    </template>
+                </div>
+            </transition>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -56,20 +67,29 @@ export default {
             type: Boolean,
             default: false,
         },
-        closeEvent: {
-            type: Function,
-            default: () => ({}),
+        positionHorizontal: {
+            type: String,
+            default: '',
         },
-        openEvent: {
-            type: Function,
-            default: () => ({}),
+        positionVertical: {
+            type: String,
+            default: '',
         },
     },
     emits: ['close', 'cancel', 'open'],
     data() {
         return {
+            active: false,
             visible: false,
         };
+    },
+    computed: {
+        modalStyle() {
+            return {
+                'align-items': this.positionVertical ?? 'center',
+                'justify-content': this.positionHorizontal ?? 'center',
+            };
+        },
     },
     beforeMount() {
         if (this.isProgrammatic) {
@@ -77,18 +97,26 @@ export default {
         }
     },
     mounted() {
-        this.visible = Boolean(this.isProgrammatic);
+        if (this.isProgrammatic) {
+            this.open();
+        }
     },
     methods: {
-        close() {
-            this.visible = false;
-            this.closeEvent();
+        cancel() {
             this.$emit('close');
+            this.close();
+        },
+        close() {
+            this.active = false;
+
+            setTimeout(() => {
+                this.visible = false;
+            }, 250);
 
             // Timeout for the animation complete before destroying
             if (this.programmatic) {
-                this.isActive = false;
                 setTimeout(() => {
+                    this.visible = false;
                     this.$destroy();
 
                     if (typeof this.$el.remove !== 'undefined') {
@@ -97,12 +125,16 @@ export default {
                         this.$el.remove();
                     }
 
-                }, 150);
+                }, 500);
             }
         },
         open() {
             this.visible = true;
-            this.openEvent();
+            this.$emit('open');
+
+            setTimeout(() => {
+                this.active = true;
+            }, 250);
         },
     },
 };
@@ -110,31 +142,25 @@ export default {
 
 <style lang="postcss" scoped>
 .bas-modal {
+    align-items: center;
     backdrop-filter: blur(3px);
-    display: none;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
     height: 100%;
-    position: absolute;
+    justify-content: center;
+    position: fixed;
     top: 0;
-    visibility: hidden;
+    visibility: visible;
     width: 100%;
     z-index: 999;
-
-    &--visible,
-    &:target {
-        animation-duration: 200ms;
-        animation-name: slideFromTop;
-        display: flex;
-        visibility: visible;
-    }
 
     &__modal {
         background-color: #fff;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
         box-sizing: border-box;
-        margin: auto;
         padding: 1.5em;
-        position: relative;
-        width: 50vw;
+        position: fixed;
+        width: 80vw;
 
         &__close {
             fill: #ddd;
@@ -149,23 +175,34 @@ export default {
                 cursor: pointer;
             }
         }
-
-        &__buttons .button {
-            margin-right: 1em;
-        }
     }
 }
 
-@keyframes slideFromTop {
-    from {
-        opacity: 0;
-        top: -100px;
-    }
+.fade-enter-active {
+    transition: all 0.3s ease;
+}
 
-    to {
-        opacity: 1;
-        top: 0;
-    }
+.fade-leave-active {
+    transition: all 0.5s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.5s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.125, 0.3, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 @keyframes spin {

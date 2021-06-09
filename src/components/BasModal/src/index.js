@@ -2,13 +2,30 @@ import BasModal from './BasModal';
 
 let localVueInstance = null;
 
+const setSlots = (slots, component) => {
+    if (slots) {
+        const { header, body, footer } = slots;
+
+        component.$slots.header = Array.isArray(header) ? component.$createElement(...header) : header ?? null;
+        component.$slots.body = Array.isArray(body) ? component.$createElement(...body) : body ?? null;
+        component.$slots.footer = Array.isArray(footer) ? component.$createElement(...footer) : footer ?? null;
+
+        component.$forceUpdate();
+    }
+};
+
 const BasModalProgrammatic = {
     open(parameters) {
-        const parent = null;
-        console.log(parameters);
-        // const propertiesData = merge(defaultParameter, parameters);
-        const Vue = typeof window !== 'undefined' && window.Vue ? window.Vue : localVueInstance;
-        const BasModalComponent = Vue.extend(BasModal);
+        const { parent, slots } = parameters;
+
+        if (parameters.component && !parent) {
+            throw new Error('No parent component provided for modal!');
+        }
+
+        delete parameters.parent;
+        delete parameters.slots;
+
+        const BasModalComponent = localVueInstance.extend(BasModal);
         const component = new BasModalComponent({
             parent,
             el: document.createElement('div'),
@@ -18,11 +35,13 @@ const BasModalProgrammatic = {
             },
         });
 
+        setSlots(slots, component);
+
         return component;
     },
 };
 
-const BasModalPlugin = {
+const plugin = {
     install(Vue) {
         localVueInstance = Vue;
         if (!Vue.prototype.$basman) {
@@ -33,7 +52,7 @@ const BasModalPlugin = {
     },
 };
 
-export default BasModalPlugin;
+export default plugin;
 
 export {
     BasModalProgrammatic,

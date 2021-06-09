@@ -35,7 +35,10 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.12.1",
+    "@vue/composition-api": "1.0.0-rc.1",
     "core-js": "3.8.3",
+    "install": "0.13.0",
+    "npm": "7.5.3",
     "vue": "2.6.12"
   },
   "devDependencies": {

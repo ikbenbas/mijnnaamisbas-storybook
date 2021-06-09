@@ -1,11 +1,11 @@
 {
   "name": "@basman/bas-modal",
   "version": "0.0.0",
-  "description": "VueJS component for example purpose",
+  "description": "VueJS modal component",
   "keywords": [
     "Vue",
     "VueJS",
-    "Example component"
+    "Modal"
   ],
   "license": "MIT",
   "author": "Bas van Wouwen",

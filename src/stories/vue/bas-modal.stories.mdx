@@ -1,8 +1,8 @@
 import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
-import { BasModal, BasModalProgrammatic } from '../../components/BasModal/src/';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
+import BasModalPlugin, { BasModal, BasModalProgrammatic } from '../../components/BasModal/src/';
 import BasExample from '../../components/BasExample/src/BasExample';
 import Vue from 'vue';
-import BasModalPlugin from '../../components/BasModal/src';
 
 <Meta title="Vue/BasModal" component={BasModal} />
 
@@ -29,12 +29,44 @@ Add the modal component to your template and trigger with the `open` event.
     <Story name="Default">
     {{
         components: { BasModal },
+        props: {
+            positionHorizontal: {
+                default: select(
+                    'Horizontal position',
+                    {
+                        Left: 'flex-start',
+                        Center: 'center',
+                        Right: 'flex-end',
+                        None: null,
+                    },
+                    'center'
+                ),
+            },
+            positionVertical: {
+                default: select(
+                    'Vertical position',
+                    {
+                        Top: 'flex-start',
+                        Center: 'center',
+                        Bottom: 'flex-end',
+                        None: null,
+                    },
+                    'center'
+                ),
+            },
+        },
         template: `
             <section>
-                <BasModal ref="modal" :close-event="closeAlert" :open-event="openAlert">
+                <BasModal
+                    ref="modal"
+                    @close="closeAlert"
+                    @open="openAlert"
+                    :position-vertical="positionVertical"
+                    :position-horizontal="positionHorizontal"
+                >
                     <template #header><h1>header</h1></template>
                     <template #body><p>body</p></template>
-                    <template #buttons><button>buttons</button></template>
+                    <template #footer><button>buttons</button></template>
                 </BasModal>
                 <button @click="openModal">Open Modal</button>
             </section>
@@ -82,6 +114,7 @@ You can also choose to open the component programmatically. With this option you
         template: `
             <section>
                 <button @click="openModal">Open modal programmatically</button>
+                <button @click="openModalSlots">Open modal programmatically with slots</button>
             </section>
         `,
         created() {
@@ -90,7 +123,28 @@ You can also choose to open the component programmatically. With this option you
         methods: {
             openModal() {
                 this.$basman.modal.open({
+                    'parent': this,
                     'component': BasExample
+                });
+            },
+            openModalSlots() {
+                this.$basman.modal.open({
+                    'parent': this,
+                    'slots': {
+                        'header': [
+                            'h1',
+                            'Title as h1'
+                        ],
+                        'body': [
+                            BasExample,
+                            {
+                                props: {
+                                    message: 'Body as Vue component'
+                                }
+                            }
+                        ],
+                        'footer': 'Footer as a string',
+                    }
                 });
             }
         }
@@ -99,7 +153,45 @@ You can also choose to open the component programmatically. With this option you
 </Preview>
 
 ```javascript
-this.$basman.modal.open();
+import Vue from 'vue';
+import BasModalPlugin from '@basman/bas-modal';
+
+export default {
+    created() {
+        Vue.use(BasModalPlugin);
+    },
+    methods: {
+        openModal() {
+            this.$basman.modal.open({
+                'parent': this,
+                'component': BasExample
+            });
+        }
+    }
+};
+```
+
+Or pass a slots:
+
+```javascript
+this.$basman.modal.open({
+    'parent': this,
+    'slots': {
+        'header': [
+            'h1',
+            'Title as h1'
+        ],
+        'body': [
+            BasExample,
+            {
+                props: {
+                    message: 'Body as Vue component'
+                }
+            }
+        ],
+        'footer': 'Footer as a string',
+    }
+});
 ```
 
 ## Component properties
